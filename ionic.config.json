@@ -1,0 +1,8 @@
+{
+  "name": "shengyizhuanjia",
+  "app_id": "968b3823",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
