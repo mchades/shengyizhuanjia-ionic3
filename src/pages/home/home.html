@@ -1,18 +1,124 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title text-center>首页</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only><ion-icon name="calendar"></ion-icon></button>
+      <button ion-button icon-only><ion-icon name="notifications"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content no-padding>
+  <img src="assets/images/androidbanner.png">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p no-padding no-margin>今日</p>
+        <h4><span>{{today | number:'1.2-2'}}元</span></h4>
+        <p>比昨日：<span [ngClass]="{'less-equal':cmpToday <= 0,'greater':cmpToday > 0}">{{cmpToday | number:'1.2-2'}}</span>&nbsp;
+          <ion-icon *ngIf="cmpToday>0" name="arrow-round-up"></ion-icon>
+          <ion-icon *ngIf="cmpToday==0" name="arrow-round-forward"></ion-icon>
+          <ion-icon *ngIf="cmpToday<0" name="arrow-round-down"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col>
+        <p no-padding no-margin>七日</p>
+        <h4>{{sevenDays| number:'1.2-2'}}<span>元</span></h4>
+        <p>比同期：<span [ngClass]="{'less-equal':cmpSevenDays <= 0,'greater':cmpSevenDays > 0}">{{cmpSevenDays | number:'1.2-2'}}</span>&nbsp;
+          <ion-icon *ngIf="cmpSevenDays>0" name="arrow-round-up"></ion-icon>
+          <ion-icon *ngIf="cmpSevenDays==0" name="arrow-round-forward"></ion-icon>
+          <ion-icon *ngIf="cmpSevenDays<0" name="arrow-round-down"></ion-icon>
+        </p>
+      </ion-col>
+      <ion-col>
+        <p no-padding no-margin>本月</p>
+        <h4>{{thisMonth | number:'1.2-2'}}<span>元</span></h4>
+        <p>比同期：<span [ngClass]="{'less-equal':cmpThisMonth <= 0,'greater':cmpThisMonth > 0}">{{cmpThisMonth | number:'1.2-2'}}</span>&nbsp;
+          <ion-icon *ngIf="cmpThisMonth>0" name="arrow-round-up"></ion-icon>
+          <ion-icon *ngIf="cmpThisMonth==0" name="arrow-round-forward"></ion-icon>
+          <ion-icon *ngIf="cmpThisMonth<0" name="arrow-round-down"></ion-icon>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="quick-actions">
+      <ion-col class="quick-action-item" [navPush]="addProductPage">
+        <a class="shortcut" href="">
+          <ion-icon name="list"></ion-icon>
+          <div>新增商品</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="person-add"></ion-icon>
+          <div>新增会员</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="calculator"></ion-icon>
+          <div>收银记账</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="logo-usd"></ion-icon>
+          <div>支出管理</div>
+        </a>
+      </ion-col>
+    </ion-row>
+    <ion-row class="quick-actions">
+      <ion-col class="quick-action-item" [navPush]="productListPage">
+        <a class="shortcut" >
+          <ion-icon name="browsers"></ion-icon>
+          <div>商品管理</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="people"></ion-icon>
+          <div>会员管理</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="cart"></ion-icon>
+          <div>查询销售</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="pulse"></ion-icon>
+          <div>智能分析</div>
+        </a>
+      </ion-col>
+    </ion-row>
+    <ion-row class="quick-actions">
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="create"></ion-icon>
+          <div>供应商管理</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="calendar"></ion-icon>
+          <div>挂单</div>
+        </a>
+      </ion-col>
+      <ion-col class="quick-action-item">
+        <a class="shortcut" href="">
+          <ion-icon name="add"></ion-icon>
+          <div>高级功能</div>
+        </a>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+<ion-footer>
+  <copyright [bottom]="'20px'" ></copyright>
+</ion-footer>
+

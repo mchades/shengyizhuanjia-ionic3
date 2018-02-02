@@ -1,0 +1,59 @@
+<!--
+  Generated template for the ShopPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title text-center>店铺信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item [navPush]="editShopPage" [navParams]="{title:'店铺名称',property:'shopName'}">
+      店铺名称
+      <ion-note item-end>{{user.shopName}}</ion-note>
+      <ion-icon name="arrow-forward" item-end style="color: #ececec"></ion-icon>
+    </ion-item>
+    <ion-item clear ion-item [navPush]="editShopPage" [navParams]="{title:'店铺简称',property:'shortName'}">
+      店铺简称
+      <ion-note item-end>{{user.shortName}}</ion-note>
+      <ion-icon name="arrow-forward" item-end style="color: #ececec"></ion-icon>
+    </ion-item>
+    <ion-item>
+      注册时间
+      <ion-note item-end>{{user.registerTime}}</ion-note>
+    </ion-item>
+    <ion-item>
+      手机号码
+      <ion-note item-end>{{user.phone}}</ion-note>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      电子邮件
+      <ion-note item-end>{{user.email}}</ion-note>
+    </ion-item>
+    <ion-item [navPush]="editShopPage" [navParams]="{title:'店主姓名',property:'shopkeeper'}">
+      店主姓名
+      <ion-note item-end>{{user.shopkeeper}}</ion-note>
+      <ion-icon name="arrow-forward" item-end style="color: #ececec"></ion-icon>
+    </ion-item>
+    <ion-item [navPush]="editShopPage" [navParams]="{title:'店铺电话',property:'shopPhone'}">
+      店铺电话
+      <ion-note item-end>{{user.shopPhone}}</ion-note>
+      <ion-icon name="arrow-forward" item-end style="color: #ececec"></ion-icon>
+    </ion-item>
+    <ion-item [navPush]="editShopPage" [navParams]="{title:'行业类型',property:'shopType'}">
+      行业类型
+      <ion-note item-end>{{user.shopType}}</ion-note>
+      <ion-icon name="arrow-forward" item-end style="color: #ececec"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

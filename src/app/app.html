@@ -1,18 +1,21 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-menu [content]="content" [swipeEnabled]="false">
   <ion-content>
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+      <ion-item>
+        <h2>{{shopName}}</h2>
+        <h3>{{userPhone}}</h3>
+        <ion-badge item-end color="primary">高级版</ion-badge>
+      </ion-item>
+        <button menuClose ion-item *ngFor="let p of pages">
+          <ion-icon [name]="p.icon" item-start></ion-icon>
+          {{p.title}}
+        </button>
+      <ion-item no-lines></ion-item>
     </ion-list>
+    <button menuClose ion-button color="dark" clear (click)="toSetting()">
+      <ion-icon name='settings'>  设置</ion-icon>
+    </button>
   </ion-content>
-
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

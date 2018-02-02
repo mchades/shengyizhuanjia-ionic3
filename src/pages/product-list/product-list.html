@@ -1,0 +1,67 @@
+<!--
+  Generated template for the ProductListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>商品管理</ion-title>
+    <ion-buttons end>
+      <button end ion-button [navPush]="categoryListPage">分类</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <ion-searchbar [(ngModel)]="name" showCancelButton="false"
+                   (ionInput)="onInput($event)" placeholder="请是输入商品名称、拼音、数字..." >
+  </ion-searchbar>
+  <div class="center" *ngIf="products.length == 0">
+    <img src="assets/images/commodity_no.png" >
+    <ion-note >您还没有任何商品信息</ion-note>
+    <ion-note >您可以</ion-note>
+    <button ion-button ion-row>新增商品</button>
+  </div>
+  <div *ngIf="products.length != 0">
+    <ion-list>
+      <ion-item class="border" >
+        <label item-start>总正库存{{totalStock | number:'1.2-2'}}件，总成本{{totalPurchasePrice | number:'1.2-2'}}元</label>
+        <button item-right icon-only [navPush]="addProduct" ion-button clear>
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item *ngFor="let product of products" [navParams]="{product:product}" [navPush]="productDetailPage">
+        <ion-thumbnail item-start>
+          <img src="assets/images/c_goodspicture.png" *ngIf="product.images.length == 0">
+          <img src="product.images[0]" *ngIf="product.images.length > 0">
+        </ion-thumbnail>
+        <h2 style="font-size: larger;margin-bottom: 3%">{{product.name}}</h2>
+        <h3 style="color: #FF6A3C;font-size: large;margin-bottom: 3%">￥{{product.price}}</h3>
+        <p>条码：{{product.barcode}} <span>库存：{{product.stock}}件 </span></p>
+        <button ion-button clear item-end icon-only><ion-icon name="git-branch"></ion-icon></button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content pullingIcon="arrow-dropdown"
+                           pullingText="下拉可以刷新"
+                           refreshingSpinner="circles"
+                           refreshingText="正在加载...">
+
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="加载更多商品数据...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

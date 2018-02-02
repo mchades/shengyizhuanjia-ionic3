@@ -1,0 +1,13 @@
+page-product-list {
+  .border{
+    border-bottom: solid 1px #ececec;
+    border-top:solid 1px #ececec ;
+  }
+
+  .center{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+}
